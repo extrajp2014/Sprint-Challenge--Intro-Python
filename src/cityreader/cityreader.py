@@ -77,11 +77,17 @@ for c in cities:
 # TODO Get latitude and longitude values from the user
 
 def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
-  # within will hold the cities that fall within the specified region
-  within = []
+    # within will hold the cities that fall within the specified region
+    min_lon, min_lat= min([lon1, lon2]), min([lat1, lat2])
+    max_lon, max_lat = max([lon1, lon2]), max([lat1, lat2])
 
-  # TODO Ensure that the lat and lon valuse are all floats
-  # Go through each city and check to see if it falls within 
-  # the specified coordinates.
+    # TODO Ensure that the lat and lon valuse are all floats
+    # Go through each city and check to see if it falls within 
+    # the specified coordinates.
 
-  return within
+    within = []
+    for city in cities:
+        if (min_lat <= float(c.lat) <= max_lat and 
+            min_lon <= float(c.lon) <= max_lon):
+            within.append(city)
+    return within
